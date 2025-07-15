@@ -1,0 +1,61 @@
+---
+title: "Dokumentasi Sistem Pembayaran OVA-Pay"
+author: "Muhammad Rivky Andhika Prayudia"
+date: "`r format(Sys.Date(), '%d-%m-%Y')`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Poin C - Pengujian Fungsi Package OVA-Pay
+Pada bagian ini, dilakukan pengujian langsung terhadap seluruh fungsi dalam package `OVAPay` yang telah dibuat. Fungsi-fungsi ini mencerminkan proses bisnis dari sistem pembayaran berbasis top-up seperti registrasi user, login, top up saldo, transfer, hingga pembuatan laporan.
+
+## Contoh Penggunaan Package OVA-Pay
+```{r}
+library(OVAPay)
+```
+
+## Registrasi dan Login
+```{r}
+register_user("rivky", "1234")
+register_user("fahmi", "abcd")
+login_user("rivky", "1234")
+```
+Syntax diatas merupakan syntax yang dapat digunakan untuk menjalankan fungsi registrasi dan login pada package OVA-Pay. Kenapa harus registrasi dikarenakan user yang akan menggunakan semua fitur yang ada di aplikasi pembayaran OVA-Pay harud bener-bener terferivikasi dan terdaftar sebagai user yang sah. Dengan demikian dapat memudahkan pelacakan jika terjadi suatu hal yang tidak diinginkan.
+
+## Top Up Saldo
+```{r}
+topup("rivky", 100000)
+topup("fahmi", 30000)
+```
+Syntax diatas merupakan syntax yang dapat digunakan untuk melakukan top up saldo pada user yang telah terdaftar. Top up saldo ini dilakukan untuk menambah saldo pada akun user agar dapat melakukan transaksi pembayaran. Tanpa saldo yang cukup transaksi yang akan dilakukan tidak akan berjalan atau akan secara otomatis digagalkan oleh sistem
+
+## Melihat Saldo
+```{r}
+lihat_saldo("rivky")
+lihat_saldo("fahmi")
+```
+Syntax diatas merupakan syntax yang dapat digunakan untuk melihat saldo pada akun user yang telah terdaftar. Dengan melihat saldo ini user dapat mengetahui berapa banyak saldo yang dimiliki dan apakah saldo tersebut cukup untuk melakukan transaksi pembayaran. Syntax ini juga menampilakn jumlah keselurahan saldo yang dimiliki oleh user.
+
+## Membuat Pemesanan dan Pembayaran
+```{r}
+create_order("rivky", 20000, "Premium Subscription")
+pay("rivky", 5000, "Tagihan Air")
+```
+Syntax diatas merupakan syntax yang dapat digunakan untuk membuat pemesanan dan melakukan pembayaran pada akun user yang telah terdaftar. Dengan membuat pemesanan ini user dapat melakukan transaksi pembayaran sesuai dengan kebutuhan mereka. Sedangkan untuk melakukan pembayaran, user harus memiliki saldo yang cukup untuk membayar tagihan atau pemesanan yang telah dibuat, jika tidak sistem akan secara otomatis menggagalkan transaksi tersebut.
+
+## Transfer ke Bank dan User Lain
+```{r}
+transfer_bank("rivky", 10000, "Bank BCA")
+transfer("rivky", "fahmi", 5000)
+```
+Syntax diatas merupakan syntax yang dapat digunakan untuk melakukan transfer ke rekening bank atau ke user aplikasi OVA-Pay lain. Dengan melakukan transfer ini user dapat mengirimkan saldo mereka ke rekening bank atau ke user lain yang telah terdaftar. Hal ini memudahkan user dalam melakukan transaksi pembayaran dan pengelolaan saldo mereka. Denga adanya fitur ini user dalam melakukan transaksi yang flesibel, mudah, dan dengan sama siapa saja.
+
+## Membuat Laporan Transaksi
+```{r}
+generate_laporan_csv("rivky")
+generate_laporan_csv("fahmi")
+```
+Syntax diatas merupakan syntax yang dapat digunakan untuk membuat laporan transaksi dalam format CSV. Dengan membuat laporan ini, user dapat melihat riwayat transaksi mereka secara detail dan terstruktur. Laporan ini juga dapat digunakan untuk keperluan audit atau pelacakan jika terjadi masalah dalam transaksi. Laporan yang disajikan memuat username, jumlah transaksi, jenis transaksi, dan tanggal transaksi.

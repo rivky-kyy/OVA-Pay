@@ -1,0 +1,17 @@
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/reference/create_order.html</loc></url>
+<url><loc>/reference/generate_laporan_csv.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/lihat_saldo.html</loc></url>
+<url><loc>/reference/login_user.html</loc></url>
+<url><loc>/reference/pay.html</loc></url>
+<url><loc>/reference/register_user.html</loc></url>
+<url><loc>/reference/topup.html</loc></url>
+<url><loc>/reference/transfer.html</loc></url>
+<url><loc>/reference/transfer_bank.html</loc></url>
+<url><loc>/reference/validasi_user.html</loc></url>
+</urlset>
+
