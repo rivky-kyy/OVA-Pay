@@ -14,7 +14,7 @@ system('git config user.name "imtikhanis"')
 system('git config user.email "andhika.4929@gmail.com"')
 
 
-system("git remote add origin https://github.com/rivky-kyy/OVA-Pay.git")
+#system("git remote add origin https://github.com/rivky-kyy/OVA-Pay.git")# digunakan jika github baru mau dikoneksikan
 system("git remote set-url origin https://github.com/rivky-kyy/OVA-Pay.git")
 system("git branch -M main")
 system("git push -u origin main")

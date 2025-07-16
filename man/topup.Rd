@@ -12,7 +12,7 @@ topup(username, amount)
 \item{amount}{Jumlah yang akan ditambahkan}
 }
 \value{
-Saldo terbaru
+Pesan konfirmasi top-up
 }
 \description{
 Fungsi untuk menambahkan saldo ke akun user

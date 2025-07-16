@@ -24,10 +24,10 @@ create_order <- function(username, amount, item) {
   saveRDS(saldo, saldo_path)
 
   transaksi <- data.frame(
-    username = username,
-    amount = amount,
-    keterangan = paste("Pemesanan:", item),
-    waktu = format(Sys.time(), "%Y-%m-%d %H:%M:%S")
+    Username = username,
+    Amount = amount,
+    Keterangan = paste("Pemesanan:", item),
+    Waktu = format(Sys.time(), "%Y-%m-%d %H:%M:%S")
   )
 
   if (file.exists(transaksi_path)) {

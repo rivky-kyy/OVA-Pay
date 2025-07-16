@@ -3,6 +3,7 @@
 export(create_order)
 export(generate_laporan_csv)
 export(lihat_saldo)
+export(lihat_semua_user)
 export(login_user)
 export(pay)
 export(register_user)

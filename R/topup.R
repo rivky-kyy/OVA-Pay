@@ -4,7 +4,7 @@
 #'
 #' @param username Nama pengguna
 #' @param amount Jumlah yang akan ditambahkan
-#' @return Saldo terbaru
+#' @return Pesan konfirmasi top-up
 #' @export
 topup <- function(username, amount) {
   saldo_path <- paste0("data/", username, "_saldo.rds")
@@ -19,5 +19,8 @@ topup <- function(username, amount) {
   saldo <- saldo + amount
   saveRDS(saldo, saldo_path)
 
-  return(paste("Top up berhasil. Saldo saat ini:", saldo))
+  # Format nilai top-up (bukan saldo akhir)
+  amount_formatted <- format(amount, big.mark = ".", decimal.mark = ",", scientific = FALSE)
+
+  return(paste("Top up berhasil sebesar", amount_formatted))
 }

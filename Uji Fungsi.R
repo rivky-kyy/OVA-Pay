@@ -12,7 +12,7 @@ validasi_user("mama")
 login_user("rivky", "1234")
 
 # Top up saldo
-topup("mama", 10000)
+topup("mama", 400000)
 
 # Lihat saldo setelah top up
 lihat_saldo("fahmi")
@@ -32,3 +32,8 @@ generate_laporan_csv("rivky")
 # Coba transfer ke user lain
 transfer("mama", "rivky", 5000)
 
+# Lihat semua user yang terdaftar
+lihat_semua_user("owner")
+
+# Hapus akun
+hapus_akun("rivky", "1234")

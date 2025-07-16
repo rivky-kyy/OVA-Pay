@@ -25,10 +25,10 @@ pay <- function(username, amount, keterangan = "") {
 
   # Catat ke transaksi
   transaksi <- data.frame(
-    username = username,
-    amount = amount,
-    keterangan = paste("Tagihan:", keterangan),
-    waktu = format(Sys.time(), "%Y-%m-%d %H:%M:%S")
+    Username = username,
+    Amount = amount,
+    Keterangan = paste("Tagihan:", keterangan),
+    Waktu = format(Sys.time(), "%Y-%m-%d %H:%M:%S")
   )
 
   transaksi_path <- paste0("data/", username, "_transaksi.csv")

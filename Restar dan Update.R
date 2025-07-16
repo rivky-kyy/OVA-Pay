@@ -6,5 +6,6 @@ usethis::create_package("C:\\Users\\Lenovo\\Documents\\Kuliah UII\\Semester 4\\P
 
 remove.packages("OVAPay")
 
+devtools::load_all()
 devtools::document()
 devtools::install()
