@@ -2,6 +2,8 @@
 
 export(create_order)
 export(generate_laporan_csv)
+export(hapus_akun)
+export(lihat_raw_data)
 export(lihat_saldo)
 export(lihat_semua_user)
 export(login_user)

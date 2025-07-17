@@ -3,37 +3,58 @@ help(package = "OVAPay")
 library(OVAPay)
 
 # Register akun baru
-register_user("rivky", "0987")
+register_user("papa", "0987")
 
 # Cek apakah user sudah terdaftar
-validasi_user("mama")
+validasi_user("papa")
 
-# Login user (opsional, jika ada fungsi login_user)
-login_user("rivky", "1234")
+# Login user
+login_user("papa", "0987")
 
 # Top up saldo
-topup("mama", 400000)
+topup("papa", 10000)
 
 # Lihat saldo setelah top up
-lihat_saldo("fahmi")
+lihat_saldo("papa")
 
 # Buat pemesanan
-create_order("rivky", 19, "PPPPPPP")
+create_order("papa", 1000, "Rumah")
 
 # Membayar pemesanan
-pay("rivky", 5000, "UUUUUUUU")
+pay("papa", 1000, "Rumah")
 
 # Lakukan transfer ke rekening bank
-transfer_bank("mama", 10, "Bank Mandiri")
+transfer_bank("papa", 1000, "Bank Mandiri")
 
 # Generate laporan transaksi ke CSV
-generate_laporan_csv("rivky")
+generate_laporan_csv("papa")
 
 # Coba transfer ke user lain
-transfer("mama", "rivky", 5000)
+transfer("papa", "mama", 2000)
 
 # Lihat semua user yang terdaftar
 lihat_semua_user("owner")
 
 # Hapus akun
-hapus_akun("rivky", "1234")
+hapus_akun("papa","0987")
+
+# Raw data
+raw <- lihat_raw_data()
+
+for (i in 1:nrow(raw)) {
+  user <- raw$username[i]
+  jumlah <- raw$amount[i]
+  jenis <- raw$jenis_transaksi[i]
+
+  if (jenis == "topup") {
+    topup(user, jumlah)
+
+  } else if (jenis == "pay") {
+    pay(user, jumlah, "Pembayaran dari raw data")
+
+  } else if (jenis == "transfer") {
+
+    transfer(user, "rivky", jumlah)
+  }
+}
+

@@ -1,4 +1,12 @@
-hapus_akun <- function(username, password) {
+#' Hapus Akun
+#'
+#' Fungsi untuk menghapus akun dan seluruh datanya (saldo, transaksi, laporan).
+#'
+#' @param username Nama pengguna
+#' @param password Kata sandi pengguna
+#' @return Pesan status
+#' @export
+  hapus_akun <- function(username, password) {
   path <- paste0("data/", username, ".rds")
 
   if (!file.exists(path)) {

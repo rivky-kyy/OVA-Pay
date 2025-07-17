@@ -59,3 +59,53 @@ generate_laporan_csv("rivky")
 generate_laporan_csv("fahmi")
 ```
 Syntax diatas merupakan syntax yang dapat digunakan untuk membuat laporan transaksi dalam format CSV. Dengan membuat laporan ini, user dapat melihat riwayat transaksi mereka secara detail dan terstruktur. Laporan ini juga dapat digunakan untuk keperluan audit atau pelacakan jika terjadi masalah dalam transaksi. Laporan yang disajikan memuat username, jumlah transaksi, jenis transaksi, dan tanggal transaksi.
+
+## Melihat Semua User
+```{r}
+lihat_semua_user("owner")
+```
+Syntax diatas merupakan syntax yang dapat digunakan untuk melihat semua user yang terdaftar dalam aplikasi OVA-Pay. Dengan melihat semua user ini, admin atau owner aplikasi dapat mengelola user yang terdaftar dan melakukan tindakan jika diperlukan, seperti menghapus akun user yang tidak aktif atau melakukan verifikasi terhadap user baru.
+
+## Menghapus Akun User
+```{r}
+hapus_akun("rivky", "1234")
+hapus_akun("fahmi", "abcd")
+```
+Syntax diatas merupakan syntax yang dapat digunakan untuk menghapus akun user yang telah terdaftar. Dengan menghapus akun ini, user tidak akan dapat lagi mengakses aplikasi OVA-Pay dan semua data terkait akun tersebut akan dihapus dari sistem. Hal ini berguna jika user ingin berhenti menggunakan aplikasi atau jika ada masalah dengan akun mereka.
+
+## Melihat Raw Data
+```{r}
+raw <- lihat_raw_data()
+raw
+```
+Syntax diatas merupakan syntax yang dapat digunakan untuk melihat raw data dari semua transaksi yang telah dilakukan oleh user. Raw data ini berisi informasi detail tentang setiap transaksi, termasuk username, jumlah transaksi, jenis transaksi, dan tanggal transaksi. Data ini dapat digunakan untuk analisis lebih lanjut atau untuk keperluan audit.
+
+## Validasi User
+```{r}
+validasi_user("rivky")
+validasi_user("fahmi")
+```
+Syntax diatas merupakan syntax yang dapat digunakan untuk memvalidasi apakah user telah terdaftar dalam sistem OVA-Pay. Dengan melakukan validasi ini, sistem dapat memastikan bahwa user yang mencoba mengakses aplikasi adalah user yang sah dan terdaftar. Jika user tidak terdaftar, sistem akan menolak akses mereka.
+
+## Menjalankan Fungsi Dengan Raw Data
+```{r}
+for (i in 1:nrow(raw)) {
+  user <- raw$username[i]
+  jumlah <- raw$amount[i]
+  jenis <- raw$jenis_transaksi[i]
+
+  if (jenis == "topup") {
+    topup(user, jumlah)
+
+  } else if (jenis == "pay") {
+    pay(user, jumlah, "Pembayaran dari raw data")
+
+  } else if (jenis == "transfer") {
+    transfer(user, "fahmi", jumlah)
+  }
+}
+```
+Syntax diatas merupakan syntax yang dapat digunakan untuk menjalankan fungsi-fungsi dalam package OVA-Pay menggunakan raw data yang telah diambil. Dengan menjalankan fungsi ini, sistem akan melakukan transaksi sesuai dengan jenis transaksi yang terdapat dalam raw data, seperti top up, pembayaran, atau transfer. Hal ini memudahkan dalam pengolahan data transaksi secara otomatis dan efisien.
+
+## Kesimpulan
+Package OVA-Pay menyediakan berbagai fungsi yang memudahkan dalam pengelolaan sistem pembayaran berbasis top-up. Dengan fitur-fitur seperti registrasi user, top up saldo, transfer, dan pembuatan laporan, OVA-Pay dapat digunakan untuk berbagai keperluan transaksi secara efisien dan aman. Pengujian fungsi-fungsi ini menunjukkan bahwa package OVA-Pay dapat beroperasi dengan baik sesuai dengan kebutuhan pengguna. Dengan demikian diharapkan fitur-fitur yang ada pada package OVA-Pay dapat terus dikembangkan dan ditingkatkan untuk memenuhi kebutuhan pengguna yang semakin kompleks.
